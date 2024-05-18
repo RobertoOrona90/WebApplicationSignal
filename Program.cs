@@ -9,7 +9,7 @@ builder.Services.AddSignalR(hubOptions =>
 {
     hubOptions.EnableDetailedErrors = true;
     hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
-});
+}).AddAzureSignalR("connection_string"); ;
 
 var app = builder.Build();
 
