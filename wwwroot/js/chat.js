@@ -1,6 +1,10 @@
 ﻿"use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub", {
+    // "Foo: Bar" will not be sent with WebSockets or Server-Sent Events requests
+    headers: { "Foo": "Bar" },
+    transport: signalR.HttpTransportType.LongPolling
+}).build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
