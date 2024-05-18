@@ -11,6 +11,15 @@ builder.Services.AddSignalR(hubOptions =>
     hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
 }).AddAzureSignalR("connection_string"); ;
 
+
+builder.Services.AddLogging(logging =>
+{
+    // Configura el logging según tus necesidades
+    logging.AddConsole(); // Agrega el logging a la consola
+    logging.AddDebug();   // Agrega el logging a Debug
+                          // Puedes agregar otros proveedores de logging aquí, como ser log4net, Serilog, etc.
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
